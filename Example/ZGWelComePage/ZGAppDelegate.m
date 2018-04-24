@@ -7,12 +7,54 @@
 //
 
 #import "ZGAppDelegate.h"
-
+#import "ZGWelComeVC.h"
 @implementation ZGAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+
+    UIViewController *homeVC = [[UIViewController alloc] init];
+    homeVC.view.backgroundColor = [UIColor redColor];
+    // 通过版本号值判断是否首次启动app
+    NSDictionary *dict = [NSBundle mainBundle].infoDictionary;
+    NSString *curVersion = dict[@"CFBundleShortVersionString"];
+    NSString *lastVersion = [[NSUserDefaults standardUserDefaults] objectForKey:@"versionKey"];
+
+    if ([curVersion isEqualToString:lastVersion]) {
+        // 进入主控制器
+        self.window.rootViewController = homeVC;
+
+    } else {
+        if (curVersion) {
+            [[NSUserDefaults standardUserDefaults] setObject:curVersion forKey:@"versionKey"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        }
+        // 进入欢迎页控制器
+        NSArray *imgArr = @[@"welcome1", @"welcome2", @"welcome3"];
+        ZGWelComeVC *welcomeVC = [[ZGWelComeVC alloc] initWithImageNameArray:imgArr rootViewController:homeVC];
+        self.window.rootViewController = welcomeVC;
+
+    }
+    //    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    //
+    //    UIViewController *homeVC = [[UIViewController alloc] init];
+    //    homeVC.view.backgroundColor = [UIColor redColor];
+    //
+    //    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    //    // 通过取SHWelcomeIsLaunchDefaultKey的值来判断是否首次启动app
+    //    if ([defaults boolForKey:SHWelcomeIsLaunchDefaultKey] != YES) {
+    //        // 是第一次启动
+    //        NSArray *imgArr = @[@"welcome1", @"welcome2", @"welcome3"];
+    //        ZGWelComeVC *welcomeVC = [[ZGWelComeVC alloc] initWithImageNameArray:imgArr rootViewController:homeVC];
+    //        self.window.rootViewController = welcomeVC;
+    //    }else{
+    //        // 不是第一次启动
+    //        self.window.rootViewController = homeVC;
+    //    }
+    //
+    [self.window makeKeyAndVisible];
     return YES;
 }
 
