@@ -1,0 +1,16 @@
+PODS:
+  - ZGWelComePage (0.1.0)
+
+DEPENDENCIES:
+  - ZGWelComePage (from `../`)
+
+EXTERNAL SOURCES:
+  ZGWelComePage:
+    :path: ../
+
+SPEC CHECKSUMS:
+  ZGWelComePage: 8973f933bff17b9f1eae9a2fd5e798bf40f8d119
+
+PODFILE CHECKSUM: a1b14284d74c4f0c593755dcaa6e0a9f5cae13bf
+
+COCOAPODS: 1.4.0

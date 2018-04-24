@@ -1,0 +1,6 @@
+framework module ZGWelComePage {
+  umbrella header "ZGWelComePage-umbrella.h"
+
+  export *
+  module * { export * }
+}
