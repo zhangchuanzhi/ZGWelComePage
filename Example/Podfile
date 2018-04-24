@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'ZGWelComePage_Example' do
+  pod 'ZGWelComePage', :path => '../'
+
+  target 'ZGWelComePage_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
