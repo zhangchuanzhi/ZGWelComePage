@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "管理一条线.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "管理一条线.png",
       "scale" : "2x"
     },
     {
